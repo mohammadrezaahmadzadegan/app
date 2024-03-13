@@ -327,6 +327,7 @@ require('models/insert.php')
                         </div>
                         <div class="chat-history">
                             <ul class="m-b-0">
+                                <form id="dlform" action="models/insert.php" method="POST">
                                 <?php
 
 
@@ -354,7 +355,7 @@ foreach ($select as $value) {
     <a href="http://localhost/app/?id=<?= $value['id'] ?>">
     <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
     </a>
-
+<input type="checkbox" name="delete[]" value="<?= $value['id'] ?>">
 </div>    
 
                                     </div>
@@ -367,7 +368,7 @@ foreach ($select as $value) {
 
                                 ?>
 
-
+</form>
                             </ul>
                         </div>
 
@@ -377,7 +378,7 @@ foreach ($select as $value) {
                             //$result3 = $result->insertForm(); 
                             ?>
                               
-                            <form class="d-flex" action="models/insert.php/?id=<?php
+                            <form id="inform" class="d-flex" action="models/insert.php/?id=<?php
                              if(isset($_GET['id'])){
                                     $id = $_GET['id'];
                                  echo  $id;
@@ -398,10 +399,13 @@ foreach ($select as $value) {
                                 }
                                 ?>">
 
-                                <button class="fa fa-send"></button>
+                                
 
 
                             </form>
+                            <button form="inform" class="fa fa-send"></button>
+                            <button form="dlform" class="fa fa-trash-o"></button>
+
                         </div>
                     </div>
                 </div>
